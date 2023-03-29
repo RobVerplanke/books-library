@@ -1,10 +1,111 @@
-.book{
-    background-image: url("https://placekitten.com/120/80");
-    width: 200px;
-    height: 300px;
-    margin: 20px;
+/***** Custom properties *****/
+
+:root{
+    /* Global layout */
+    --app-width: 1024px;
+    --header-height: 100px;
+    --nav-height: 60px;
+
+    /* Colors */
+    --border-color: black;
+
+    /* Elements */
+    --book-width: 200px;
+    --book-height: 300px;
 }
 
-.book-title{
+/***** Temporary borders *****/
+
+.app-container,
+.logo-container,
+.title-container,
+.search-form,
+.add-button,
+.book-container,
+.book,
+.book-content,
+.book-title,
+.book-author,
+.book-genre,
+.book-pages,
+.book-status,
+.book-delete
+{
+    border: solid 1px var(--border-color);
+}
+
+
+/***** Global styles *****/
+
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    display: grid;
+    justify-content: center;
+}
+
+
+
+header{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+nav{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     
+    height: var(--nav-height);
+}
+
+.app-container{
+    display: grid;
+    grid-template-columns: var(--app-width);
+    grid-template-rows: var(--header-height) var(--nav-height) 1fr;
+    
+    height: max-content;
+}
+
+
+/***** Layout *****/
+
+.logo-container{
+    display: grid;
+    justify-content:flex-end;
+    align-items: center;
+}
+
+.title-container{
+    display: grid;
+    justify-content:flex-start;
+    align-items: center;
+}
+
+.search-form{
+    display: grid;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.add-button{
+    display: grid;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.book-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+
+/***** Elements *****/
+
+.book{
+    width: var(--book-width);
+    height: var(--book-height);
+    margin: 20px;
 }
