@@ -12,7 +12,7 @@
     --app-width: 70vw;
     --app-height: max-content;
     
-    --header-height: 100px;
+    --header-height: 140px;
     --nav-height: 40px;
     --nav-margin-bottom: 40px;
 
@@ -24,18 +24,19 @@
     --book-width: 150px;
     --book-height: 225px;
     
-    /* Colors */
+    /* Background colors */
     --body-background: radial-gradient(circle, rgb(83, 28, 128), rgb(40, 20, 80));
     --main-color: rgba(255, 255, 255, 0.05);
     --book-color: rgba(0, 0, 0, 0.15);
-    --border-color: rgb(255, 255, 255, .2);
-
+    --border-color: rgb(255, 255, 255, .3);
+    --global-font-color: #eeeeee;
+    
     /* Fonts */
     --header-font: 'Barrio', cursive;
-    --header-font-size: 1.4em;
-
+    --header-font-size: 1.6em;
+    --header-font-color: #eeeeee; 
+    
     --global-font: 'Merriweather', serif;
-    --global-font-color: white; 
     --global-font-size: 1em;
 }
 
@@ -62,7 +63,9 @@ header{
     overflow:hidden;
 
     font-family: var(--header-font);
+    color: var(--header-font-color);
     font-size: var(--header-font-size);
+    
 }
 
 main{
@@ -70,6 +73,7 @@ main{
     padding: 20px;
     background-color: var(--main-color);
     box-shadow: 10px 10px 20px 1px black;
+    border-radius: 20px;
 }
 
 nav{
@@ -123,7 +127,6 @@ nav{
 
 .book-container{
     display: grid;
-    overflow: auto;
     grid-template-rows: repeat(2, 1fr);
     grid-template-columns: repeat(auto-fit, minmax(var(--book-width), 1fr));
     gap: var(--book-container-gap);
@@ -135,6 +138,25 @@ nav{
 
 /***** Components *****/
 
+#add-button{
+    border: 0;
+    width: 120px;
+    height: 60px;
+    border-radius: 8px;
+    background: #6a45a5;
+    color: #eeeeee;
+    font-size: 1em;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+#search-button{
+    border: 0;
+    width: 80px;
+    height: 20px;
+    border-radius: 4px;
+}
+
 .book{
     height: var(--book-height);
     background-color: var(--book-color);
@@ -144,6 +166,7 @@ nav{
     display: flex;
     justify-content: end;
 }
+
 
 
 /***** Temporary borders *****/
