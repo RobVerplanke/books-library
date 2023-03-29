@@ -2,9 +2,16 @@
 
 :root{
     /* Global layout */
-    --app-width: 1024px;
+    --app-margin-top: 60px;
+    --app-width: 90vw;
+    --app-height: max-content;
+    
     --header-height: 100px;
     --nav-height: 60px;
+
+    --book-container-row-height: 300px;
+    --book-container-margin: 20px;
+    --book-container-gap: 40px;
 
     /* Colors */
     --border-color: black;
@@ -14,39 +21,18 @@
     --book-height: 300px;
 }
 
-/***** Temporary borders *****/
-
-.app-container,
-.logo-container,
-.title-container,
-.search-form,
-.add-button,
-.book-container,
-.book,
-.book-content,
-.book-title,
-.book-author,
-.book-genre,
-.book-pages,
-.book-status,
-.book-delete
-{
-    border: solid 1px var(--border-color);
-}
-
 
 /***** Global styles *****/
 
 body{
+    display: grid;
+    grid-template-columns: 1fr var(--app-width) 1fr;
+    justify-content: center;
+    
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-
-    display: grid;
-    justify-content: center;
 }
-
-
 
 header{
     display: grid;
@@ -62,10 +48,12 @@ nav{
 
 .app-container{
     display: grid;
+    grid-area: 1 / 2;
     grid-template-columns: var(--app-width);
-    grid-template-rows: var(--header-height) var(--nav-height) 1fr;
-    
-    height: max-content;
+    grid-template-rows: var(--header-height) var(--nav-height);
+        
+    height: var(--app-height);
+    margin-top: var(--app-margin-top);
 }
 
 
@@ -97,15 +85,38 @@ nav{
 
 .book-container{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    overflow: auto;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(var(--book-width), 1fr));
+    gap: var(--book-container-gap);
+    
+    margin: var(--book-container-margin);    
 }
 
 
-/***** Elements *****/
+/***** Components *****/
 
 .book{
-    width: var(--book-width);
     height: var(--book-height);
-    margin: 20px;
+}
+
+
+/***** Temporary borders *****/
+
+.app-container,
+.logo-container,
+.title-container,
+.search-form,
+.add-button,
+.book-container,
+.book,
+.book-content,
+.book-title,
+.book-author,
+.book-genre,
+.book-pages,
+.book-status,
+.book-delete
+{
+    border: solid 1px var(--border-color);
 }
