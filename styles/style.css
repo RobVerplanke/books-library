@@ -8,25 +8,27 @@
 
 :root{
     /* Global layout */
-    --app-margin-top: 60px;
+    --app-margin-top: 20px;
     --app-width: 70vw;
     --app-height: max-content;
     
     --header-height: 100px;
-    --nav-height: 60px;
+    --nav-height: 40px;
+    --nav-margin-bottom: 40px;
 
     --book-container-row-height: 300px;
     --book-container-padding-top: 40px;
     --book-container-gap: 20px;
     
     /* Elements */
-    --book-width: 200px;
-    --book-height: 300px;
-
+    --book-width: 150px;
+    --book-height: 225px;
+    
     /* Colors */
-    --body-background: radial-gradient(rgb(130, 70, 180), rgb(40, 20, 80));
-    --container-color: rgba(255, 255, 255, 0.1);
-    --border-color: rgb(255, 255, 255);
+    --body-background: radial-gradient(circle, rgb(83, 28, 128), rgb(40, 20, 80));
+    --main-color: rgba(255, 255, 255, 0.05);
+    --book-color: rgba(0, 0, 0, 0.15);
+    --border-color: rgb(255, 255, 255, .2);
 
     /* Fonts */
     --header-font: 'Barrio', cursive;
@@ -63,18 +65,20 @@ header{
     font-size: var(--header-font-size);
 }
 
+main{
+    height: max-content;
+    padding: 20px;
+    background-color: var(--main-color);
+    box-shadow: 10px 10px 20px 1px black;
+}
+
 nav{
     display: grid;
     grid-template-columns: 1fr 1fr;
     
     height: var(--nav-height);
-    background-color: var(--container-color);
-
-}
-
-main{
-    box-shadow: 10px 10px 10px 10px;
-
+    margin-bottom: var(--nav-margin-bottom);
+    
 }
 
 
@@ -84,14 +88,13 @@ main{
     display: grid;
     grid-area: 1 / 2;
     grid-template-columns: var(--app-width);
-    grid-template-rows: var(--header-height) auto;
+    grid-template-rows: var(--header-height) var(--nav-height) auto;
         
     height: var(--app-height);
     margin-top: var(--app-margin-top);
     font-family: var(--global-font);
     font-size: var(--global-font-size);
     color: var(--global-font-color)
-    
 }
 
 .logo-container{
@@ -125,9 +128,8 @@ main{
     grid-template-columns: repeat(auto-fit, minmax(var(--book-width), 1fr));
     gap: var(--book-container-gap);
     
-    padding-top: var(--book-container-padding-top);   
-    background-color: var(--container-color);
-    
+    padding-top: var(--book-container-padding-top);  
+    border-top: solid 1px var(--border-color);    
 }
 
 
@@ -135,6 +137,7 @@ main{
 
 .book{
     height: var(--book-height);
+    background-color: var(--book-color);
 }
 
 .book-delete{
@@ -160,5 +163,4 @@ main{
 .book-status,
 .book-delete
 {
-    border: solid 1px var(--border-color);
 }
