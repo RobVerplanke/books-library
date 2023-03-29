@@ -1,25 +1,42 @@
+/***** Imports *****/
+
+@import url('https://fonts.googleapis.com/css2?family=Barrio&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+
+
 /***** Custom properties *****/
 
 :root{
     /* Global layout */
     --app-margin-top: 60px;
-    --app-width: 90vw;
+    --app-width: 70vw;
     --app-height: max-content;
     
     --header-height: 100px;
     --nav-height: 60px;
 
     --book-container-row-height: 300px;
-    --book-container-margin: 20px;
-    --book-container-gap: 40px;
-
-    /* Colors */
-    --border-color: black;
-
+    --book-container-padding-top: 40px;
+    --book-container-gap: 20px;
+    
     /* Elements */
     --book-width: 200px;
     --book-height: 300px;
+
+    /* Colors */
+    --body-background: radial-gradient(rgb(130, 70, 180), rgb(40, 20, 80));
+    --container-color: rgba(255, 255, 255, 0.1);
+    --border-color: rgb(255, 255, 255);
+
+    /* Fonts */
+    --header-font: 'Barrio', cursive;
+    --header-font-size: 1.4em;
+
+    --global-font: 'Merriweather', serif;
+    --global-font-color: white; 
+    --global-font-size: 1em;
 }
+
 
 
 /***** Global styles *****/
@@ -32,11 +49,18 @@ body{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+
+    background: var(--body-background);
+      
 }
 
 header{
     display: grid;
     grid-template-columns: 1fr 1fr;
+    overflow:hidden;
+
+    font-family: var(--header-font);
+    font-size: var(--header-font-size);
 }
 
 nav{
@@ -44,42 +68,47 @@ nav{
     grid-template-columns: 1fr 1fr;
     
     height: var(--nav-height);
+    background-color: var(--container-color);
+
 }
+
+
+/***** Overall layout *****/
 
 .app-container{
     display: grid;
     grid-area: 1 / 2;
     grid-template-columns: var(--app-width);
-    grid-template-rows: var(--header-height) var(--nav-height);
+    grid-template-rows: var(--header-height) var(--nav-height) auto;
         
     height: var(--app-height);
     margin-top: var(--app-margin-top);
+    font-family: var(--global-font);
+    font-size: var(--global-font-size);
+    color: var(--global-font-color)
 }
-
-
-/***** Layout *****/
 
 .logo-container{
     display: grid;
-    justify-content:flex-end;
+    justify-content: end;
     align-items: center;
 }
 
 .title-container{
     display: grid;
-    justify-content:flex-start;
+    justify-content: start;
     align-items: center;
 }
 
 .search-form{
     display: grid;
-    justify-content: flex-start;
+    justify-content: start;
     align-items: center;
 }
 
 .add-button{
     display: grid;
-    justify-content: flex-end;
+    justify-content: end;
     align-items: center;
 }
 
@@ -90,7 +119,10 @@ nav{
     grid-template-columns: repeat(auto-fit, minmax(var(--book-width), 1fr));
     gap: var(--book-container-gap);
     
-    margin: var(--book-container-margin);    
+    padding-top: var(--book-container-padding-top);   
+    background-color: var(--container-color);
+    box-shadow: 10px 10px 10px 10px;
+    
 }
 
 
@@ -98,6 +130,11 @@ nav{
 
 .book{
     height: var(--book-height);
+}
+
+.book-delete{
+    display: flex;
+    justify-content: end;
 }
 
 
