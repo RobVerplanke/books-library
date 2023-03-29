@@ -72,6 +72,11 @@ nav{
 
 }
 
+main{
+    box-shadow: 10px 10px 10px 10px;
+
+}
+
 
 /***** Overall layout *****/
 
@@ -79,13 +84,14 @@ nav{
     display: grid;
     grid-area: 1 / 2;
     grid-template-columns: var(--app-width);
-    grid-template-rows: var(--header-height) var(--nav-height) auto;
+    grid-template-rows: var(--header-height) auto;
         
     height: var(--app-height);
     margin-top: var(--app-margin-top);
     font-family: var(--global-font);
     font-size: var(--global-font-size);
     color: var(--global-font-color)
+    
 }
 
 .logo-container{
@@ -121,7 +127,6 @@ nav{
     
     padding-top: var(--book-container-padding-top);   
     background-color: var(--container-color);
-    box-shadow: 10px 10px 10px 10px;
     
 }
 
