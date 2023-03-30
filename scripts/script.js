@@ -1,3 +1,8 @@
+const bookTitle = document.getElementsByClassName('book-title');
+const bookAuthor = document.getElementsByClassName('book-author');
+const bookGenre = document.getElementsByClassName('book-genre');
+const bookPages = document.getElementsByClassName('book-pages');
+
 const myLibrary = [
   {
     title: 'The Time Traveler\'s Magic', author: 'Luna Blackwood', pages: 280, genre: 'Fantasy', read: true,
@@ -31,10 +36,22 @@ const myLibrary = [
   },
 ];
 
-function Book() {
-  // the constructor...
+function Book(title, author, genre, pages, read) {
+  this.title = title;
+  this.author = author;
+  this.genre = genre;
+  this.pages = pages;
+  this.read = read;
 }
 
 function addBookToLibrary() {
-  // do stuff here
+  // get user input
+  // create new object
+  // add new object to array
 }
+
+function showAllBooks() {
+
+}
+
+const book1 = new Book('The Dragon\'s Hoard 2', 'Draco Flameheart', 412, false);
