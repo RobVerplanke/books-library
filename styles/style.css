@@ -17,24 +17,23 @@
     --nav-margin-bottom: 40px;
 
     --book-container-row-height: 300px;
-    --book-container-padding-top: 40px;
-    --book-container-gap: 20px;
+    --book-container-gap: 60px;
     
     /* Elements */
-    --book-width: 150px;
-    --book-height: 225px;
+    --book-width: 200px;
+    --book-height: 170px;
     
     /* Background colors */
     --body-background: radial-gradient(circle, rgb(83, 28, 128), rgb(40, 20, 80));
     --main-color: rgba(255, 255, 255, 0.05);
-    --book-color: rgba(0, 0, 0, 0.15);
-    --border-color: rgb(255, 255, 255, .3);
-    --global-font-color: #eeeeee;
+    --book-color: #f4e8ff;
+    --border-color: rgba(255, 255, 255, 0.151);
+    --global-font-color: #333;
     
     /* Fonts */
     --header-font: 'Barrio', cursive;
-    --header-font-size: 1.6em;
-    --header-font-color: #eeeeee; 
+    --header-font-size: 2em;
+    --header-font-color: #f4e8ff;
     
     --global-font: 'Merriweather', serif;
     --global-font-size: 1em;
@@ -59,7 +58,7 @@ body{
 
 header{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
     overflow:hidden;
 
     font-family: var(--header-font);
@@ -72,18 +71,27 @@ main{
     height: max-content;
     padding: 20px;
     background-color: var(--main-color);
-    box-shadow: 10px 10px 20px 1px black;
+    box-shadow: 5px 5px 20px 1px black;
     border-radius: 20px;
 }
 
 nav{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 3fr 1fr;
     
     height: var(--nav-height);
     margin-bottom: var(--nav-margin-bottom);
     
 }
+
+p, h3, h4{
+    margin: 5px;
+}
+
+p{
+    font-size: .8em;
+}
+
 
 
 /***** Overall layout *****/
@@ -131,54 +139,155 @@ nav{
     grid-template-columns: repeat(auto-fit, minmax(var(--book-width), 1fr));
     gap: var(--book-container-gap);
     
-    padding-top: var(--book-container-padding-top);  
+    padding: 50px 20px 50px 20px;
     border-top: solid 1px var(--border-color);    
 }
 
 
 /***** Components *****/
 
+.material-symbols-outlined{
+    color: #eee;
+}
+
+.logo-container span{
+    color: #eee;
+    font-size: 2em;
+    padding-right: 20px;
+}
+
 #add-button{
     border: 0;
-    width: 120px;
+    width: 60px;
     height: 60px;
-    border-radius: 8px;
+    border-radius: 80px;
     background: #6a45a5;
     color: #eeeeee;
-    font-size: 1em;
+    font-size: 3em;
     font-weight: 700;
     cursor: pointer;
 }
 
 #search-button{
     border: 0;
-    width: 80px;
+    width: 100px;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 10px;
+    background: #7951b8;
+    color: #eee;
+    font-size: 1em;
+    margin-left: 20px;
+}
+
+.search-form input{
+    border: 0;
     height: 20px;
-    border-radius: 4px;
+    width: 300px;
+    background: transparent;
+    border-bottom: solid 1px #eee;
 }
 
 .book{
     height: var(--book-height);
     background-color: var(--book-color);
+    border-radius: 10px;
+    box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    position: relative;
+}
+
+.book-author{
+    margin-bottom: 20px;
+    color: #33333391;
 }
 
 .book-delete{
-    display: flex;
-    justify-content: end;
+   display: flex;
+   justify-content: end;
 }
 
+.book-delete input{
+    border: 0;
+    height: 30px;
+    border-radius: 10px;
+    background-color:#6a45a5;
+    color: #eeeeee;
+    position:absolute;
+    top: 150px;
+    cursor: pointer;
+}
+
+.book-status{
+    margin-left: 5px;
+}
+
+
+/***** Toggle switch *****/
+
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 38px;
+    height: 20px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #9f21f3;
+  }
+  
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(16px);
+    -ms-transform: translateX(16px);
+    transform: translateX(16px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
 
 
 /***** Temporary borders *****/
 
-.app-container,
-.logo-container,
-.title-container,
-.search-form,
-.add-button,
-.book-container,
-.book,
-.book-content,
 .book-title,
 .book-author,
 .book-genre,
