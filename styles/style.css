@@ -58,12 +58,13 @@ body{
 
 header{
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 3fr;
     overflow:hidden;
 
     font-family: var(--header-font);
     color: var(--header-font-color);
     font-size: var(--header-font-size);
+    letter-spacing: .1em;
     
 }
 
@@ -71,7 +72,7 @@ main{
     height: max-content;
     padding: 20px;
     background-color: var(--main-color);
-    box-shadow: 5px 5px 20px 1px black;
+    box-shadow: 2px 2px 20px 1px rgba(0, 0, 0, 0.2);
     border-radius: 20px;
 }
 
