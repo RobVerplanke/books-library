@@ -1,5 +1,4 @@
-const bookContainer = document.getElementsByClassName('book-container');
-const addButton = document.getElementById('add-button');
+const addButton = document.getElementById('submit-button');
 
 const myLibrary = [
   {
@@ -41,52 +40,67 @@ function Book(title, author, genre, pages, read) {
   this.pages = pages;
   this.read = read;
 }
-console.log(myLibrary);
+
+function resetForm(newTitle, newAuthor, bookGenre, bookPages, bookRead) {
+  newTitle.value = '';
+  newAuthor.value = '';
+  bookGenre.value = '';
+  bookPages.value = '';
+  bookRead.value = '';
+}
 
 function addBookToLibrary() {
-  // create new object
-  const newBook = new Book('Testtitle', 'testauthor', 'testgenre', 'testpages', 'testread');
-  myLibrary.push(newBook);
-  console.log(`Lengte: ${myLibrary.length}`);
+  const newTitle = document.getElementById('new-book-title');
+  const newAuthor = document.getElementById('new-book-author');
+  const bookGenre = document.getElementById('new-book-genre');
+  const bookPages = document.getElementById('new-book-pages');
+  const bookRead = document.getElementById('submit-button');
 
-  // newBook.classList.add('book');
-  // bookContainer.appendCild(newBook);
-  // get user input and put them in object
+  // create new object
+  // eslint-disable-next-line max-len
+  const newBook = new Book(newTitle.value, newAuthor.value, bookGenre.value, bookPages.value, bookRead.value);
+
   // add object to array
+  myLibrary.push(newBook);
+  // eslint-disable-next-line no-restricted-globals
+  event.preventDefault();
+  resetForm(newTitle, newAuthor, bookGenre, bookPages, bookRead);
+
+  console.log(`${myLibrary.length}`);
 }
 
 addButton.addEventListener('click', addBookToLibrary);
 
-function removeBook() {
+// function removeBook() {
 
-}
+// }
 
-function showLibrary() {
-  // create new card
-  const book = document.createElement('div');
-  book.classList.add('book');
+// function showLibrary() {
+//   // create new card
+//   const book = document.createElement('div');
+//   book.classList.add('book');
 
-  // create new card elements
-  const bookTitle = document.createElement('div');
-  const bookAuthor = document.createElement('div');
-  const bookGenre = document.createElement('div');
-  const bookPages = document.createElement('div');
-  const bookRead = document.createElement('div');
-  const bookRemove = document.createElement('button');
+//   // create new card elements
+//   const bookTitle = document.createElement('div');
+//   const bookAuthor = document.createElement('div');
+//   const bookGenre = document.createElement('div');
+//   const bookPages = document.createElement('div');
+//   const bookRead = document.createElement('div');
+//   const bookRemove = document.createElement('button');
 
-  // add classes
-  bookTitle.classList.add('book-title');
-  bookAuthor.classList.add('book-author');
-  bookGenre.classList.add('book-genre');
-  bookPages.classList.add('book-pages');
-  bookRead.classList.add('book-read');
-  bookRemove.classList.add('book-delete');
+//   // add classes
+//   bookTitle.classList.add('book-title');
+//   bookAuthor.classList.add('book-author');
+//   bookGenre.classList.add('book-genre');
+//   bookPages.classList.add('book-pages');
+//   bookRead.classList.add('book-read');
+//   bookRemove.classList.add('book-delete');
 
-  bookRemove.addEventListener('click', () => removeBook());
+//   bookRemove.addEventListener('click', () => removeBook());
 
-  // add elements to main card
-  book.append(bookTitle, bookAuthor, bookGenre, bookPages, bookRead, bookRemove);
+//   // add elements to main card
+//   book.append(bookTitle, bookAuthor, bookGenre, bookPages, bookRead, bookRemove);
 
-  // add card to book container
-  bookContainer.appendChild(book);
-}
+//   // add card to book container
+//   bookContainer.appendChild(book);
+// }
