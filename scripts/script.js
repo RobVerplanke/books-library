@@ -1,4 +1,4 @@
-const addButton = document.getElementById('submit-button');
+const submitButton = document.getElementById('submit-button');
 
 const myLibrary = [
   {
@@ -33,7 +33,7 @@ const myLibrary = [
   },
 ];
 
-function Book(title, author, genre, pages, read) {
+function Book(title, author, genre, pages, read = '(un)read') {
   this.title = title;
   this.author = author;
   this.genre = genre;
@@ -41,68 +41,38 @@ function Book(title, author, genre, pages, read) {
   this.read = read;
 }
 
+function addBookToLibrary() {
+  const newTitle = document.getElementById('new-book-title').value;
+  const newAuthor = document.getElementById('new-book-author').value;
+  const newGenre = document.getElementById('new-book-author').value;
+  const newPages = document.getElementById('new-book-author').value;
+
+  const newBook = new Book(newTitle, newAuthor, newGenre, newPages);
+
+  myLibrary.push(newBook);
+}
+
+submitButton.addEventListener('click', addBookToLibrary);
+
 function showLibrary() {
   const bookContainer = document.getElementById('book-container');
-  // create new card for each array item
 
-  const book = document.createElement('div');
-  book.classList.add('book');
+  function createCard(title, author, genre, pages) {
+    const libraryBook = document.createElement('div').classList.add('book');
 
-  // create new card elements
-  const bookTitle = document.createElement('div');
-  const bookAuthor = document.createElement('div');
-  const bookGenre = document.createElement('div');
-  const bookPages = document.createElement('div');
-  const bookRead = document.createElement('div');
-  const bookRemove = document.createElement('button');
+    const libraryBookTitle = document.createElement('div').classList.add('book-title');
+    const libraryBookAuthor = document.createElement('div').classList.add('book-author');
+    const libraryBookGenre = document.createElement('div').classList.add('book-genre');
+    const libraryBookPages = document.createElement('div').classList.add('book-pages');
 
-  // add classes
-  bookTitle.classList.add('book-title');
-  bookAuthor.classList.add('book-author');
-  bookGenre.classList.add('book-genre');
-  bookPages.classList.add('book-pages');
-  bookRead.classList.add('book-read');
-  bookRemove.classList.add('book-delete');
-
-  function removeBook() {
+    libraryBook.append(libraryBookTitle, libraryBookAuthor, libraryBookGenre, libraryBookPages);
+    bookContainer.appendChild(libraryBook);
   }
 
-  bookRemove.addEventListener('click', () => removeBook());
-
-  // add elements to main card
-  book.append(bookTitle, bookAuthor, bookGenre, bookPages, bookRead, bookRemove);
-
-  // add card to book container
-  bookContainer.appendChild(book);
+  myLibrary.forEach((book) => {
+    console.log(`test ${book}`);
+    createCard(book.title, book.author, book.genre, book.pages);
+  });
 }
 
-function resetForm(newTitle, newAuthor, bookGenre, bookPages, bookRead) {
-  newTitle.value = '';
-  newAuthor.value = '';
-  bookGenre.value = '';
-  bookPages.value = '';
-  bookRead.value = '';
-}
-
-function addBookToLibrary() {
-  const newTitle = document.getElementById('new-book-title');
-  const newAuthor = document.getElementById('new-book-author');
-  const bookGenre = document.getElementById('new-book-genre');
-  const bookPages = document.getElementById('new-book-pages');
-  const bookRead = document.getElementById('submit-button');
-
-  // create new object
-  // eslint-disable-next-line max-len
-  const newBook = new Book(newTitle.value, newAuthor.value, bookGenre.value, bookPages.value, bookRead.value);
-
-  // add object to array
-  myLibrary.push(newBook);
-  // eslint-disable-next-line no-restricted-globals
-  event.preventDefault();
-  resetForm(newTitle, newAuthor, bookGenre, bookPages, bookRead);
-  showLibrary();
-
-  console.log(`${myLibrary.length}`);
-}
-
-addButton.addEventListener('click', addBookToLibrary);
+showLibrary();
