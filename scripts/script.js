@@ -1,7 +1,5 @@
-const bookTitle = document.getElementsByClassName('book-title');
-const bookAuthor = document.getElementsByClassName('book-author');
-const bookGenre = document.getElementsByClassName('book-genre');
-const bookPages = document.getElementsByClassName('book-pages');
+const bookContainer = document.getElementsByClassName('book-container');
+const addButton = document.getElementById('add-button');
 
 const myLibrary = [
   {
@@ -43,15 +41,52 @@ function Book(title, author, genre, pages, read) {
   this.pages = pages;
   this.read = read;
 }
+console.log(myLibrary);
 
 function addBookToLibrary() {
-  // get user input
   // create new object
-  // add new object to array
+  const newBook = new Book('Testtitle', 'testauthor', 'testgenre', 'testpages', 'testread');
+  myLibrary.push(newBook);
+  console.log(`Lengte: ${myLibrary.length}`);
+
+  // newBook.classList.add('book');
+  // bookContainer.appendCild(newBook);
+  // get user input and put them in object
+  // add object to array
 }
 
-function showAllBooks() {
+addButton.addEventListener('click', addBookToLibrary);
+
+function removeBook() {
 
 }
 
-const book1 = new Book('The Dragon\'s Hoard 2', 'Draco Flameheart', 412, false);
+function showLibrary() {
+  // create new card
+  const book = document.createElement('div');
+  book.classList.add('book');
+
+  // create new card elements
+  const bookTitle = document.createElement('div');
+  const bookAuthor = document.createElement('div');
+  const bookGenre = document.createElement('div');
+  const bookPages = document.createElement('div');
+  const bookRead = document.createElement('div');
+  const bookRemove = document.createElement('button');
+
+  // add classes
+  bookTitle.classList.add('book-title');
+  bookAuthor.classList.add('book-author');
+  bookGenre.classList.add('book-genre');
+  bookPages.classList.add('book-pages');
+  bookRead.classList.add('book-read');
+  bookRemove.classList.add('book-delete');
+
+  bookRemove.addEventListener('click', () => removeBook());
+
+  // add elements to main card
+  book.append(bookTitle, bookAuthor, bookGenre, bookPages, bookRead, bookRemove);
+
+  // add card to book container
+  bookContainer.appendChild(book);
+}

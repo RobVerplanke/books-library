@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles/style.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     
-    <script src="scripts/script.js"></script>
+    <script src="scripts/script.js" defer></script>
     <title>Books library</title>
   </head>
   <body>
@@ -104,26 +104,26 @@
               <div class="book-delete"><input type="button" value="Delete"></div>   
             </div>
           </div> 
-          <div class="form-container">
+          <!-- <div class="form-container">
             <div class="title"><h3>Add new book</h3></div>
             <div class="add-form">
               <form action="" method="post">
                 <label for="new-book-title">Title: </label><br>
-                <input type="text" id="new-book-title"><br>
+                <input type="text" id="new-book-title" name="book-title" required><br>
                 <label for="new-book-author"> Author: </label><br>
-                <input type="text" id="new-book-author"><br>
+                <input type="text" id="new-book-author" name="book-author"><br>
                 <label for="new-book-genre">Genre: </label><br>
-                <input type="text" id="new-book-genre"><br>
+                <input type="text" id="new-book-genre" name="book-genre"><br>
                 <label for="new-book-read">Pages </label><br>
-                <input type="text" id="new-book-pages"><br>
-                <p>Read?</p>
+                <input type="text" id="new-book-pages" name ="book-pages"><br>
+                <br>Read?<br><br>
                 <label class="switch">
-                  <input type="checkbox"><span class="slider round"></span>
+                  <input type="checkbox" name="bookRead"><span class="slider round"></span>
                 </label><br>
-                <button>Submit</button>
+                <button type="submit">Submit</button>
               </form>
             </div>
-          </div>      
+          </div>       -->
         </div>
       </main>
 
