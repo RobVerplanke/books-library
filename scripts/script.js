@@ -58,21 +58,28 @@ function showLibrary() {
   const bookContainer = document.getElementById('book-container');
 
   function createCard(title, author, genre, pages) {
-    const libraryBook = document.createElement('div').classList.add('book');
+    const libraryBook = document.createElement('div');
+    const libraryBookTitle = document.createElement('div');
+    const libraryBookAuthor = document.createElement('div');
+    const libraryBookGenre = document.createElement('div');
+    const libraryBookPages = document.createElement('div');
 
-    const libraryBookTitle = document.createElement('div').classList.add('book-title');
-    const libraryBookAuthor = document.createElement('div').classList.add('book-author');
-    const libraryBookGenre = document.createElement('div').classList.add('book-genre');
-    const libraryBookPages = document.createElement('div').classList.add('book-pages');
+    libraryBook.classList.add('book');
+    libraryBookTitle.classList.add('book-title');
+    libraryBookAuthor.classList.add('book-author');
+    libraryBookGenre.classList.add('book-genre');
+    libraryBookPages.classList.add('book-pages');
+
+    libraryBookTitle.textContent = title;
+    libraryBookAuthor.textContent = author;
+    libraryBookGenre.textContent = genre;
+    libraryBookPages.textContent = pages;
 
     libraryBook.append(libraryBookTitle, libraryBookAuthor, libraryBookGenre, libraryBookPages);
     bookContainer.appendChild(libraryBook);
   }
 
-  myLibrary.forEach((book) => {
-    console.log(`test ${book}`);
-    createCard(book.title, book.author, book.genre, book.pages);
-  });
+  myLibrary.forEach((book) => createCard(book.title, book.author, book.genre, book.pages));
 }
 
 showLibrary();

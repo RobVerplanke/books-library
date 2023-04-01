@@ -34,98 +34,26 @@
         </nav>
         
         <div class="book-container" id ="book-container">      
-          <div class="book">
-            <div class="book-content">
-              <div class="book-title"><h3>The Time Traveler's Magic</h3></div>
-              <div class="book-author"><em><h4>By Luna Blackwood</h4></em></div>
-              <div class="book-genre"><p>Fantasy</p></div>
-              <div class="book-pages"><p>Pages: 200</p></div>
-              <div class="book-status">
-                <label class="switch">
-                  <input type="checkbox"><span class="slider round"></span>
-                </label>
-              </div>
-              <div class="book-delete"><input  type="button" value="Delete"></div>   
-            </div>
+        <div class="form-container">
+          <div class="title"><h3>Add new book</h3></div>
+          <div class="add-form">
+            <form action="" method="post">
+              <label for="new-book-title">Title: </label><br>
+              <input type="text" id="new-book-title" name="book-title" value=""><br>
+              <label for="new-book-author"> Author: </label><br>
+              <input type="text" id="new-book-author" name="book-author" value=""><br>
+              <label for="new-book-genre">Genre: </label><br>
+              <input type="text" id="new-book-genre" name="book-genre" value=""><br>
+              <label for="new-book-read">Pages </label><br>
+              <input type="text" id="new-book-pages" name ="book-pages" value=""><br>
+              <br>Read?<br><br>
+              <label class="switch">
+                <input type="checkbox" name="bookRead"><span class="slider round" value=""></span>
+              </label><br>
+              <button type="submit" id="submit-button">Submit</button>
+            </form>
           </div>
-          <!-- <div class="book">
-            <div class="book-content">
-              <div class="book-title"><h3>titel boek2</h3></div>
-              <div class="book-author"><em><h4>schrijver</h4></em></div>
-              <div class="book-genre"><p>genre</p></div>
-              <div class="book-pages"><p>Pages: </p></div>
-              <div class="book-status">
-                <label class="switch">
-                  <input type="checkbox"><span class="slider round"></span>
-                </label>
-              </div>
-              <div class="book-delete"><input type="button" value="Delete"></div>   
-            </div>
           </div>
-          <div class="book">
-            <div class="book-content">
-              <div class="book-title"><h3>titel boek3</h3></div>
-              <div class="book-author"><em><h4>schrijver</h4></em></div>
-              <div class="book-genre"><p>genre</p></div>
-              <div class="book-pages"><p>Pages: </p></div>
-              <div class="book-status">
-                <label class="switch">
-                  <input type="checkbox"><span class="slider round"></span>
-                </label>
-              </div>
-              <div class="book-delete"><input type="button" value="Delete"></div>   
-            </div>
-          </div>
-          <div class="book">
-            <div class="book-content">
-              <div class="book-title"><h3>titel boek4</h3></div>
-              <div class="book-author"><em><h4>schrijver</h4></em></div>
-              <div class="book-genre"><p>genre</p></div>
-              <div class="book-pages"><p>Pages: </p></div>
-              <div class="book-status">
-                <label class="switch">
-                  <input type="checkbox"><span class="slider round"></span>
-                </label>
-              </div>
-              <div class="book-delete"><input type="button" value="Delete"></div>   
-            </div>
-          </div>
-          <div class="book">
-            <div class="book-content">
-              <div class="book-title"><h3>titel boek5</h3></div>
-              <div class="book-author"><em><h4>schrijver</h4></em></div>
-              <div class="book-genre"><p>genre</p></div>
-              <div class="book-pages"><p>Pages: </p></div>
-              <div class="book-status">
-                <label class="switch">
-                  <input type="checkbox"><span class="slider round"></span>
-                </label>
-              </div>
-              <div class="book-delete"><input type="button" value="Delete"></div>   
-            </div>
-          </div>  -->
-
-
-          <!-- <div class="form-container">
-            <div class="title"><h3>Add new book</h3></div>
-            <div class="add-form">
-              <form action="" method="post">
-                <label for="new-book-title">Title: </label><br>
-                <input type="text" id="new-book-title" name="book-title" value=""><br>
-                <label for="new-book-author"> Author: </label><br>
-                <input type="text" id="new-book-author" name="book-author" value=""><br>
-                <label for="new-book-genre">Genre: </label><br>
-                <input type="text" id="new-book-genre" name="book-genre" value=""><br>
-                <label for="new-book-read">Pages </label><br>
-                <input type="text" id="new-book-pages" name ="book-pages" value=""><br>
-                <br>Read?<br><br>
-                <label class="switch">
-                  <input type="checkbox" name="bookRead"><span class="slider round" value=""></span>
-                </label><br>
-                <button type="submit" id="submit-button">Submit</button>
-              </form>
-            </div>
-          </div>       --><button type="submit" id="submit-button">Submit</button>
         </div>
       </main>
 
