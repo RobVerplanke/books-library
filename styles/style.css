@@ -203,12 +203,7 @@ p{
     color: #33333391;
 }
 
-.book-delete{
-   display: flex;
-   justify-content: end;
-}
-
-.book-delete input{
+#book-delete-button{
     border: 0;
     height: 30px;
     border-radius: 10px;

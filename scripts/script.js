@@ -5,19 +5,7 @@ const submitButton = document.getElementById('submit-button');
 
 const myLibrary = [
   {
-    title: 'The Time Traveler\'s Magic', author: 'Luna Blackwood', pages: 280, genre: 'Fantasy', read: true,
-  },
-  {
     title: 'The Secret Life of Clouds', author: 'Skyler Rain', pages: 342, genre: 'Romance', read: false,
-  },
-  {
-    title: 'The Quantum Detective', author: 'Nova Starr', pages: 412, genre: 'Science Fiction', read: true,
-  },
-  {
-    title: 'The Invisible City', author: 'Avery Shadow', pages: 240, genre: 'Mystery', read: false,
-  },
-  {
-    title: 'The Midnight Library', author: 'Eve Nightingale', pages: 326, genre: 'Contemporary Fiction', read: true,
   },
   {
     title: 'The Mermaid\'s Curse', author: 'Marina Ocean', pages: 198, genre: 'Young Adult', read: true,
@@ -30,9 +18,6 @@ const myLibrary = [
   },
   {
     title: 'The Dragon\'s Hoard', author: 'Draco Flameheart', pages: 412, genre: 'Fantasy', read: false,
-  },
-  {
-    title: 'The Immortal Life of Henrietta Lacks', author: 'Rebecca Skloot', pages: 386, genre: 'Biography', read: true,
   },
 ];
 
@@ -55,19 +40,24 @@ function showLibrary() {
     const libraryBookAuthor = document.createElement('div');
     const libraryBookGenre = document.createElement('div');
     const libraryBookPages = document.createElement('div');
+    const libraryBookRead = document.createElement('checkbox');
+    const libraryBookRemove = document.createElement('button');
 
     libraryBook.classList.add('book');
     libraryBookTitle.classList.add('book-title');
     libraryBookAuthor.classList.add('book-author');
     libraryBookGenre.classList.add('book-genre');
     libraryBookPages.classList.add('book-pages');
+    libraryBookRemove.id = 'book-delete-button';
+    libraryBookRemove.textContent = 'Remove';
 
     libraryBookTitle.textContent = title;
     libraryBookAuthor.textContent = author;
-    libraryBookGenre.textContent = genre;
-    libraryBookPages.textContent = pages;
+    libraryBookGenre.textContent = (`Genre: ${genre}`);
+    libraryBookPages.textContent = (`${pages} pages`);
 
-    libraryBook.append(libraryBookTitle, libraryBookAuthor, libraryBookGenre, libraryBookPages);
+    // eslint-disable-next-line max-len
+    libraryBook.append(libraryBookTitle, libraryBookAuthor, libraryBookGenre, libraryBookPages, libraryBookRead, libraryBookRemove);
     bookContainer.appendChild(libraryBook);
   }
 
