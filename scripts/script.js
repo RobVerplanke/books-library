@@ -97,7 +97,7 @@ function showForm() {
   formContainer.classList.add('form-container-enabled');
 }
 
-submitButton.addEventListener('click', addBookToLibrary);
 addButton.addEventListener('click', showForm);
+submitButton.addEventListener('click', addBookToLibrary);
 
 showLibrary();

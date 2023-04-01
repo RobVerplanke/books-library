@@ -307,6 +307,8 @@ p{
     top: auto;
     left: auto;
 
+    opacity: 1;
+
     height: auto;
     width: 300px;
     padding: 40px;
@@ -316,6 +318,7 @@ p{
 }
 
 .form-container-disabled{
+    z-index: 2;
     position: absolute;
     top: auto;
     left: auto;
