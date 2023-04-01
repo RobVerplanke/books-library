@@ -27,6 +27,13 @@ function Book(title, author, genre, pages, read = '(un)read') {
   this.genre = genre;
   this.pages = pages;
   this.read = read;
+  this.remove = function () {
+    this.title = '';
+    this.author = '';
+    this.genre = '';
+    this.pages = '';
+    this.read = '';
+  };
 }
 
 function resetLibrary() {
@@ -49,12 +56,16 @@ function showLibrary() {
     libraryBookGenre.classList.add('book-genre');
     libraryBookPages.classList.add('book-pages');
     libraryBookRemove.id = 'book-delete-button';
-    libraryBookRemove.textContent = 'Remove';
 
     libraryBookTitle.textContent = title;
     libraryBookAuthor.textContent = author;
     libraryBookGenre.textContent = (`Genre: ${genre}`);
     libraryBookPages.textContent = (`${pages} pages`);
+    libraryBookRemove.textContent = 'Remove';
+
+    libraryBookRemove.addEventListener('click', () => {
+      console.log('remove');
+    });
 
     // eslint-disable-next-line max-len
     libraryBook.append(libraryBookTitle, libraryBookAuthor, libraryBookGenre, libraryBookPages, libraryBookRead, libraryBookRemove);

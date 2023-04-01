@@ -203,6 +203,14 @@ p{
     color: #33333391;
 }
 
+.book-genre{
+    font-size: .8em;
+}
+
+.book-pages{
+    font-size: .8em;
+}
+
 #book-delete-button{
     border: 0;
     height: 30px;
@@ -313,7 +321,7 @@ p{
 }
 
 .form-container-disabled{
-    z-index: 2;
+    z-index: 0;
     position: absolute;
     top: auto;
     left: auto;
@@ -342,15 +350,4 @@ p{
 
 .form-container h3{
     margin-bottom: 30px;
-}
-
-/***** Temporary borders *****/
-
-.book-title,
-.book-author,
-.book-genre,
-.book-pages,
-.book-status,
-.book-delete
-{
 }
