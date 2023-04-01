@@ -301,7 +301,21 @@ p{
   
 /***** Popup form *****/
 
-.form-container{
+.form-container-enabled{
+    z-index: 2;
+    position: absolute;
+    top: auto;
+    left: auto;
+
+    height: auto;
+    width: 300px;
+    padding: 40px;
+    background-color: white;
+    box-shadow: 1px 1px 5px 1px;
+    border-radius: 10px;
+}
+
+.form-container-disabled{
     position: absolute;
     top: auto;
     left: auto;
@@ -309,6 +323,7 @@ p{
     opacity: 0;
 
     height: auto;
+    width: 300px;
     padding: 40px;
     background-color: white;
     box-shadow: 1px 1px 5px 1px;

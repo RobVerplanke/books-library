@@ -1,4 +1,6 @@
+const addButton = document.getElementById('add-button');
 const submitButton = document.getElementById('submit-button');
+const formContainer = document.getElementById('form-container');
 
 const myLibrary = [
   {
@@ -41,19 +43,6 @@ function Book(title, author, genre, pages, read = '(un)read') {
   this.read = read;
 }
 
-function addBookToLibrary() {
-  const newTitle = document.getElementById('new-book-title').value;
-  const newAuthor = document.getElementById('new-book-author').value;
-  const newGenre = document.getElementById('new-book-author').value;
-  const newPages = document.getElementById('new-book-author').value;
-
-  const newBook = new Book(newTitle, newAuthor, newGenre, newPages);
-
-  myLibrary.push(newBook);
-}
-
-submitButton.addEventListener('click', addBookToLibrary);
-
 function showLibrary() {
   const bookContainer = document.getElementById('book-container');
 
@@ -81,5 +70,30 @@ function showLibrary() {
 
   myLibrary.forEach((book) => createCard(book.title, book.author, book.genre, book.pages));
 }
+
+function addBookToLibrary() {
+  const newTitle = document.getElementById('new-book-title').value;
+  const newAuthor = document.getElementById('new-book-author').value;
+  const newGenre = document.getElementById('new-book-genre').value;
+  const newPages = document.getElementById('new-book-pages').value;
+
+  const newBook = new Book(newTitle, newAuthor, newGenre, newPages);
+
+  myLibrary.push(newBook);
+  // eslint-disable-next-line no-restricted-globals
+  event.preventDefault();
+  showLibrary();
+
+  formContainer.classList.remove('form-container-enabled');
+  formContainer.classList.add('form-container-disabled');
+}
+
+function showForm() {
+  formContainer.classList.remove('form-container-disabled');
+  formContainer.classList.add('form-container-enabled');
+}
+
+submitButton.addEventListener('click', addBookToLibrary);
+addButton.addEventListener('click', showForm);
 
 showLibrary();
