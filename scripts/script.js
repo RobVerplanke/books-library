@@ -1,6 +1,7 @@
 const addButton = document.getElementById('add-button');
-const submitButton = document.getElementById('submit-button');
+const bookContainer = document.getElementById('book-container');
 const formContainer = document.getElementById('form-container');
+const submitButton = document.getElementById('submit-button');
 
 const myLibrary = [
   {
@@ -43,9 +44,11 @@ function Book(title, author, genre, pages, read = '(un)read') {
   this.read = read;
 }
 
-function showLibrary() {
-  const bookContainer = document.getElementById('book-container');
+function resetLibrary() {
+  bookContainer.textContent = '';
+}
 
+function showLibrary() {
   function createCard(title, author, genre, pages) {
     const libraryBook = document.createElement('div');
     const libraryBookTitle = document.createElement('div');
@@ -82,6 +85,7 @@ function addBookToLibrary() {
   myLibrary.push(newBook);
   // eslint-disable-next-line no-restricted-globals
   event.preventDefault();
+  resetLibrary();
   showLibrary();
 
   formContainer.classList.remove('form-container-enabled');
