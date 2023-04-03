@@ -20,8 +20,8 @@
     --book-container-gap: 60px;
     
     /* Elements */
-    --book-width: 200px;
-    --book-height: 170px;
+    --book-width: 210px;
+    --book-height: 210px;
     
     /* Background colors */
     --body-background: radial-gradient(circle, rgb(83, 28, 128), rgb(40, 20, 80));
@@ -210,6 +210,12 @@ p{
 
 .book-pages{
     font-size: .8em;
+    margin-bottom: 15px;
+}
+
+.book-read-status{
+    font-size: .8em;
+    padding-bottom: 5px;
 }
 
 #book-delete-button{
@@ -219,7 +225,8 @@ p{
     background-color:#6a45a5;
     color: #eeeeee;
     position:absolute;
-    top: 150px;
+    top: 170px;
+    margin-top: 20px;
     cursor: pointer;
 }
 
@@ -248,6 +255,7 @@ p{
     display: inline-block;
     width: 38px;
     height: 20px;
+    margin-bottom: 5px;
   }
   
   /* Hide default HTML checkbox */
