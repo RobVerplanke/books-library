@@ -45,7 +45,9 @@ const showLibrary = () => {
     const libraryBookAuthor = document.createElement('div');
     const libraryBookGenre = document.createElement('div');
     const libraryBookPages = document.createElement('div');
-    const libraryBookRead = document.createElement('checkbox');
+    const toggleLabel = document.createElement('label');
+    const toggleCheckbox = document.createElement('input');
+    const toggleSpan = document.createElement('span');
     const libraryBookRemove = document.createElement('button');
 
     libraryBook.classList.add('book');
@@ -53,6 +55,10 @@ const showLibrary = () => {
     libraryBookAuthor.classList.add('book-author');
     libraryBookGenre.classList.add('book-genre');
     libraryBookPages.classList.add('book-pages');
+    toggleLabel.classList.add('switch');
+    toggleCheckbox.classList.add('read-toggle');
+    toggleCheckbox.type = 'checkbox';
+    toggleSpan.classList.add('slider', 'round');
     libraryBookRemove.id = 'book-delete-button';
 
     libraryBookTitle.textContent = title;
@@ -61,12 +67,14 @@ const showLibrary = () => {
     libraryBookPages.textContent = (`${pages} pages`);
     libraryBookRemove.textContent = 'Remove';
 
+    toggleLabel.append(toggleCheckbox, toggleSpan);
+
     libraryBookRemove.addEventListener('click', () => {
       console.log('remove');
     });
 
     // eslint-disable-next-line max-len
-    libraryBook.append(libraryBookTitle, libraryBookAuthor, libraryBookGenre, libraryBookPages, libraryBookRead, libraryBookRemove);
+    libraryBook.append(libraryBookTitle, libraryBookAuthor, libraryBookGenre, libraryBookPages, toggleLabel, libraryBookRemove);
     bookContainer.appendChild(libraryBook);
   };
 
