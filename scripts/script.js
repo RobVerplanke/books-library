@@ -36,12 +36,10 @@ function Book(title, author, genre, pages, read = '(un)read') {
   };
 }
 
-function resetLibrary() {
-  bookContainer.textContent = '';
-}
+const resetLibrary = () => { bookContainer.textContent = ''; };
 
-function showLibrary() {
-  function createCard(title, author, genre, pages) {
+const showLibrary = () => {
+  const createCard = (title, author, genre, pages) => {
     const libraryBook = document.createElement('div');
     const libraryBookTitle = document.createElement('div');
     const libraryBookAuthor = document.createElement('div');
@@ -70,18 +68,22 @@ function showLibrary() {
     // eslint-disable-next-line max-len
     libraryBook.append(libraryBookTitle, libraryBookAuthor, libraryBookGenre, libraryBookPages, libraryBookRead, libraryBookRemove);
     bookContainer.appendChild(libraryBook);
-  }
+  };
 
   myLibrary.forEach((book) => createCard(book.title, book.author, book.genre, book.pages));
-}
+};
 
-function addBookToLibrary() {
-  const newTitle = document.getElementById('new-book-title').value;
-  const newAuthor = document.getElementById('new-book-author').value;
-  const newGenre = document.getElementById('new-book-genre').value;
-  const newPages = document.getElementById('new-book-pages').value;
+const addBookToLibrary = () => {
+  const newTitle = document.getElementById('new-book-title');
+  const newAuthor = document.getElementById('new-book-author');
+  const newGenre = document.getElementById('new-book-genre');
+  const newPages = document.getElementById('new-book-pages');
 
-  const newBook = new Book(newTitle, newAuthor, newGenre, newPages);
+  const newBook = Object.create(Book);
+  newBook.title = newTitle.value;
+  newBook.author = newAuthor.value;
+  newBook.genre = newGenre.value;
+  newBook.pages = newPages.value;
 
   myLibrary.push(newBook);
   // eslint-disable-next-line no-restricted-globals
@@ -89,14 +91,19 @@ function addBookToLibrary() {
   resetLibrary();
   showLibrary();
 
+  newTitle.value = '';
+  newAuthor.value = '';
+  newGenre.value = '';
+  newPages.value = '';
+
   formContainer.classList.remove('form-container-enabled');
   formContainer.classList.add('form-container-disabled');
-}
+};
 
-function showForm() {
+const showForm = () => {
   formContainer.classList.remove('form-container-disabled');
   formContainer.classList.add('form-container-enabled');
-}
+};
 
 addButton.addEventListener('click', showForm);
 submitButton.addEventListener('click', addBookToLibrary);

@@ -13,7 +13,7 @@
     --app-height: max-content;
     
     --header-height: 140px;
-    --nav-height: 40px;
+    --nav-height: 60px;
     --nav-margin-bottom: 40px;
 
     --book-container-row-height: 300px;
@@ -179,6 +179,7 @@ p{
     color: #eee;
     font-size: 1em;
     margin-left: 20px;
+    margin-top: 10px;
 }
 
 .search-form input{
