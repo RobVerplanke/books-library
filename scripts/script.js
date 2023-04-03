@@ -21,6 +21,7 @@ const myLibrary = [
   },
 ];
 
+// Create function constructor of a book
 function Book(title, author, genre, pages, read) {
   this.title = title;
   this.author = author;
@@ -32,18 +33,23 @@ function Book(title, author, genre, pages, read) {
   };
 }
 
+// Remove all books from display
 const resetLibrary = () => { bookContainer.textContent = ''; };
 
+// Make 'add book form' visible
 const showForm = () => {
   formContainer.classList.remove('form-container-disabled');
   formContainer.classList.add('form-container-enabled');
 };
+
+// Hide 'add book form'
 
 const hideForm = () => {
   formContainer.classList.remove('form-container-enabled');
   formContainer.classList.add('form-container-disabled');
 };
 
+// Create message for each read status
 const convertReadStatus = (status) => {
   if (status === false) {
     return 'Not read yet';
@@ -52,7 +58,9 @@ const convertReadStatus = (status) => {
   }
 };
 
+// Show all books in library array
 const showLibrary = () => {
+  // Create a 'book card' and its elements
   const createCard = (title, author, genre, pages, read) => {
     const libraryBook = document.createElement('div');
     const libraryBookTitle = document.createElement('div');
@@ -63,8 +71,10 @@ const showLibrary = () => {
     const toggleLabel = document.createElement('label');
     const toggleCheckbox = document.createElement('input');
     const toggleSpan = document.createElement('span');
+    const removeContainer = document.createElement('div');
     const libraryBookRemove = document.createElement('button');
 
+    // Add classes to all elements
     libraryBook.classList.add('book');
     libraryBookTitle.classList.add('book-title');
     libraryBookAuthor.classList.add('book-author');
@@ -76,8 +86,10 @@ const showLibrary = () => {
     toggleCheckbox.type = 'checkbox';
     toggleCheckbox.id = 'read-toggle-box';
     toggleSpan.classList.add('slider', 'round');
+    removeContainer.classList.add('remove-container');
     libraryBookRemove.id = 'book-delete-button';
 
+    // Add content to all elements
     libraryBookTitle.textContent = title;
     libraryBookAuthor.textContent = author;
     libraryBookGenre.textContent = (`Genre: ${genre}`);
@@ -85,6 +97,7 @@ const showLibrary = () => {
     libraryBookReadStatus.textContent = convertReadStatus(read);
     libraryBookRemove.textContent = 'Remove';
 
+    // Adjust slider to read status
     if (read === false) {
       toggleCheckbox.checked = false;
     } if (read === true) {
@@ -92,35 +105,50 @@ const showLibrary = () => {
     }
 
     toggleLabel.append(toggleCheckbox, toggleSpan);
+    removeContainer.append(libraryBookRemove);
 
+    // Add event listener
+    // If user toggles the read/unread slider, change read status message
     toggleCheckbox.addEventListener('click', () => {
       if (toggleCheckbox.checked === true) {
+        console.log(`read true: ${read}`);
         libraryBookReadStatus.textContent = convertReadStatus(toggleCheckbox.checked);
       } if (toggleCheckbox.checked === false) {
+        console.log(`read false: ${read}`);
         libraryBookReadStatus.textContent = convertReadStatus(toggleCheckbox.checked);
       }
+
+      // And update the book's property value of 'read' status in array
+      // Under construction
     });
 
+    // Remove book from library
+    // Under construction
     libraryBookRemove.addEventListener('click', () => {
       console.log('remove');
     });
 
+    // Add content in containers
     // eslint-disable-next-line max-len
     libraryBook.append(libraryBookTitle, libraryBookAuthor, libraryBookGenre, libraryBookPages, toggleLabel, libraryBookReadStatus, libraryBookRemove);
     bookContainer.appendChild(libraryBook);
   };
 
+  // Create a 'book card' for each book in the library array
   // eslint-disable-next-line max-len
   myLibrary.forEach((book) => createCard(book.title, book.author, book.genre, book.pages, book.read));
 };
 
+// Let user add a new book to the library array
 const addBookToLibrary = () => {
+  // Get user input
   const newTitle = document.getElementById('new-book-title');
   const newAuthor = document.getElementById('new-book-author');
   const newGenre = document.getElementById('new-book-genre');
   const newPages = document.getElementById('new-book-pages');
   const newReadStatus = document.getElementById('read-toggle-box').checked;
 
+  // Set new object property values
   const newBook = Object.create(Book);
   newBook.title = newTitle.value;
   newBook.author = newAuthor.value;
@@ -128,12 +156,14 @@ const addBookToLibrary = () => {
   newBook.pages = newPages.value;
   newBook.read = newReadStatus;
 
+  // Add new object with its new values to the library array
   myLibrary.push(newBook);
 
   // change submit button behavior
   // eslint-disable-next-line no-restricted-globals
   event.preventDefault();
 
+  // Reset app after new input
   hideForm();
   resetLibrary();
   showLibrary();
@@ -144,7 +174,9 @@ const addBookToLibrary = () => {
   newPages.value = '';
 };
 
+// Add event listeners
 addButton.addEventListener('click', showForm);
 submitButton.addEventListener('click', addBookToLibrary);
 
+// Initialize app
 showLibrary();

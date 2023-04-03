@@ -218,14 +218,16 @@ p{
     padding-bottom: 5px;
 }
 
+.remove-container{
+    border: solid 1px black;
+}
+
 #book-delete-button{
     border: 0;
     height: 30px;
     border-radius: 10px;
     background-color:#6a45a5;
     color: #eeeeee;
-    position:absolute;
-    top: 170px;
     margin-top: 20px;
     cursor: pointer;
 }
