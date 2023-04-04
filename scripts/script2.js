@@ -3,7 +3,6 @@ const bookContainer = document.getElementById('book-container');
 const formContainer = document.getElementById('form-container');
 const submitButton = document.getElementById('submit-button');
 const bookCount = document.getElementById('book-count');
-const bookCountRead = document.getElementById('book-count-read');
 
 const myLibrary = [
   {
@@ -31,9 +30,9 @@ function Book(title, author, genre, pages, read) {
   this.read = read;
 }
 
+// Counts the amount of books in library
 const updateBookCounter = () => {
   bookCount.textContent = `Books: ${myLibrary.length}`;
-  bookCountRead.textContent = 'Read: ';
 };
 
 // Make 'add book form' visible
@@ -60,6 +59,7 @@ const convertReadStatus = (status) => {
 
 // Create cards with elements for each book in the library array
 function showLibrary() {
+  updateBookCounter();
   bookContainer.innerHTML = '';
 
   myLibrary.forEach((book, index) => {
