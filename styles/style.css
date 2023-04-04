@@ -13,7 +13,7 @@
     --app-height: max-content;
     
     --header-height: 140px;
-    --nav-height: 60px;
+    --nav-height: 40px;
     --nav-margin-bottom: 40px;
 
     --book-container-row-height: 300px;
@@ -123,7 +123,7 @@ p{
     align-items: center;
 }
 
-.search-form{
+.library-info{
     display: grid;
     justify-content: start;
     align-items: center;
@@ -158,6 +158,20 @@ p{
     padding-right: 20px;
 }
 
+.library-info{
+    color: var(--header-font-color);
+}
+
+.book-count{
+    font-size: 1.2em;
+    color:#ccc;
+}
+
+.book-count-read{
+    font-size: 1.2em;
+    color:#ccc;
+}
+
 #add-button{
     border: 0;
     width: 60px;
@@ -168,27 +182,6 @@ p{
     font-size: 3em;
     font-weight: 700;
     cursor: pointer;
-}
-
-#search-button{
-    border: 0;
-    width: 100px;
-    height: 30px;
-    cursor: pointer;
-    border-radius: 10px;
-    background: var(--styled-button);
-    color: #eee;
-    font-size: 1em;
-    margin-left: 20px;
-    margin-top: 10px;
-}
-
-.search-form input{
-    border: 0;
-    height: 20px;
-    width: 300px;
-    background: transparent;
-    border-bottom: solid 1px #eee;
 }
 
 .book{

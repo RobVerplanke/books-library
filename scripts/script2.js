@@ -2,6 +2,8 @@ const addButton = document.getElementById('add-button');
 const bookContainer = document.getElementById('book-container');
 const formContainer = document.getElementById('form-container');
 const submitButton = document.getElementById('submit-button');
+const bookCount = document.getElementById('book-count');
+const bookCountRead = document.getElementById('book-count-read');
 
 const myLibrary = [
   {
@@ -27,9 +29,12 @@ function Book(title, author, genre, pages, read) {
   this.genre = genre;
   this.pages = pages;
   this.read = read;
-  this.remove = function () {
-  };
 }
+
+const updateBookCounter = () => {
+  bookCount.textContent = `Books: ${myLibrary.length}`;
+  bookCountRead.textContent = 'Read: ';
+};
 
 // Make 'add book form' visible
 const showForm = () => {
@@ -44,6 +49,7 @@ const hideForm = () => {
 };
 
 // Create message for each read status
+// eslint-disable-next-line consistent-return
 const convertReadStatus = (status) => {
   if (status === false) {
     return 'Not read yet';
@@ -52,10 +58,10 @@ const convertReadStatus = (status) => {
   }
 };
 
+// Create cards with elements for each book in the library array
 function showLibrary() {
   bookContainer.innerHTML = '';
 
-  // Create a new card with all its elements for each book in the library array
   myLibrary.forEach((book, index) => {
     const libraryBook = document.createElement('div');
     const libraryBookTitle = document.createElement('div');
@@ -96,8 +102,8 @@ function showLibrary() {
     });
 
     libraryBookRemove.addEventListener('click', () => {
+      // eslint-disable-next-line no-alert
       const confirmation = window.confirm(`Are you sure to delete: ${book.title}`);
-
       if (confirmation) {
         myLibrary.splice(index, 1);
         showLibrary();
@@ -134,9 +140,8 @@ const addBookToLibrary = () => {
   // eslint-disable-next-line no-restricted-globals
   event.preventDefault();
 
-  // Reset form after new input
+  // Hide form and reset input values after a new input
   hideForm();
-
   newTitle.value = '';
   newAuthor.value = '';
   newGenre.value = '';
