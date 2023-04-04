@@ -86,7 +86,7 @@ function showLibrary() {
     libraryBookTitle.textContent = book.title;
     libraryBookAuthor.textContent = book.author;
     libraryBookGenre.textContent = book.genre;
-    libraryBookPages.textContent = book.pages;
+    libraryBookPages.textContent = `${book.pages} pages`;
     readStatus.textContent = convertReadStatus(book.read);
 
     // Add event listeners to the checkbox/slider and the remove button
@@ -96,8 +96,12 @@ function showLibrary() {
     });
 
     libraryBookRemove.addEventListener('click', () => {
-      myLibrary.splice(index, 1);
-      showLibrary();
+      const confirmation = window.confirm(`Are you sure to delete: ${book.title}`);
+
+      if (confirmation) {
+        myLibrary.splice(index, 1);
+        showLibrary();
+      }
     });
 
     // eslint-disable-next-line max-len
