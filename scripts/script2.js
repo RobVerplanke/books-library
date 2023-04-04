@@ -95,6 +95,9 @@ function showLibrary() {
     const libraryBookAuthor = document.createElement('div');
     const libraryBookGenre = document.createElement('div');
     const libraryBookPages = document.createElement('div');
+    const toggleLabel = document.createElement('label');
+    const toggleSpan = document.createElement('span');
+    const readCheckbox = document.createElement('input');
     const readStatus = document.createElement('div');
     const libraryBookRemove = document.createElement('button');
 
@@ -103,15 +106,15 @@ function showLibrary() {
     libraryBookAuthor.classList.add('book-author');
     libraryBookGenre.classList.add('book-genre');
     libraryBookPages.classList.add('book-pages');
+    readCheckbox.type = 'checkbox';
+    readCheckbox.checked = book.read;
+    toggleLabel.classList.add('switch');
+    toggleSpan.classList.add('slider', 'round');
     readStatus.classList.add('book-read-status');
     libraryBookRemove.id = 'book-delete-button';
     libraryBookRemove.textContent = 'Remove';
 
     libraryBook.dataset.index = index;
-
-    const readCheckbox = document.createElement('input');
-    readCheckbox.type = 'checkbox';
-    readCheckbox.checked = book.read;
 
     readCheckbox.addEventListener('change', function () {
       myLibrary[index.read] = this.checked;
@@ -125,7 +128,8 @@ function showLibrary() {
     readStatus.textContent = convertReadStatus(book.read);
 
     // eslint-disable-next-line max-len
-    libraryBook.append(libraryBookTitle, libraryBookAuthor, libraryBookGenre, libraryBookPages, readCheckbox, readStatus, libraryBookRemove);
+    libraryBook.append(libraryBookTitle, libraryBookAuthor, libraryBookGenre, libraryBookPages, toggleLabel, readStatus, libraryBookRemove);
+    toggleLabel.append(readCheckbox, toggleSpan);
     bookContainer.appendChild(libraryBook);
   });
 }
