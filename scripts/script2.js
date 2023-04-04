@@ -52,43 +52,10 @@ const convertReadStatus = (status) => {
   }
 };
 
-const addBookToLibrary = () => {
-  // Get user input
-  const newTitle = document.getElementById('new-book-title');
-  const newAuthor = document.getElementById('new-book-author');
-  const newGenre = document.getElementById('new-book-genre');
-  const newPages = document.getElementById('new-book-pages');
-  const newRead = document.getElementById('read-toggle-box');
-
-  // Set new object property values
-  const newBook = Object.create(Book);
-  newBook.title = newTitle.value;
-  newBook.author = newAuthor.value;
-  newBook.genre = newGenre.value;
-  newBook.pages = newPages.value;
-  newBook.read = newRead.checked;
-
-  // Add new object with its new values to the library array
-  myLibrary.push(newBook);
-
-  // change submit button behavior
-  // eslint-disable-next-line no-restricted-globals
-  event.preventDefault();
-
-  // Reset app after new input
-  hideForm();
-
-  newTitle.value = '';
-  newAuthor.value = '';
-  newGenre.value = '';
-  newPages.value = '';
-
-  showLibrary();
-};
-
 function showLibrary() {
   bookContainer.innerHTML = '';
 
+  // Create a new card with all its elements for each book in the library array
   myLibrary.forEach((book, index) => {
     const libraryBook = document.createElement('div');
     const libraryBookTitle = document.createElement('div');
@@ -116,16 +83,22 @@ function showLibrary() {
 
     libraryBook.dataset.index = index;
 
-    readCheckbox.addEventListener('change', function () {
-      myLibrary[index.read] = this.checked;
-      readStatus.textContent = convertReadStatus(this.checked);
-    });
-
     libraryBookTitle.textContent = book.title;
     libraryBookAuthor.textContent = book.author;
     libraryBookGenre.textContent = book.genre;
     libraryBookPages.textContent = book.pages;
     readStatus.textContent = convertReadStatus(book.read);
+
+    // Add event listeners to the checkbox/slider and the remove button
+    readCheckbox.addEventListener('change', function () {
+      myLibrary[index.read] = this.checked;
+      readStatus.textContent = convertReadStatus(this.checked);
+    });
+
+    libraryBookRemove.addEventListener('click', () => {
+      myLibrary.splice(index, 1);
+      showLibrary();
+    });
 
     // eslint-disable-next-line max-len
     libraryBook.append(libraryBookTitle, libraryBookAuthor, libraryBookGenre, libraryBookPages, toggleLabel, readStatus, libraryBookRemove);
@@ -134,8 +107,45 @@ function showLibrary() {
   });
 }
 
+const addBookToLibrary = () => {
+  // Get user input
+  const newTitle = document.getElementById('new-book-title');
+  const newAuthor = document.getElementById('new-book-author');
+  const newGenre = document.getElementById('new-book-genre');
+  const newPages = document.getElementById('new-book-pages');
+  const newRead = document.getElementById('read-toggle-box');
+
+  // Set new object property values
+  const newBook = Object.create(Book);
+  newBook.title = newTitle.value;
+  newBook.author = newAuthor.value;
+  newBook.genre = newGenre.value;
+  newBook.pages = newPages.value;
+  newBook.read = newRead.checked;
+
+  // Add new object with its new values to the library array
+  myLibrary.push(newBook);
+
+  // change submit button behavior
+  // eslint-disable-next-line no-restricted-globals
+  event.preventDefault();
+
+  // Reset form after new input
+  hideForm();
+
+  newTitle.value = '';
+  newAuthor.value = '';
+  newGenre.value = '';
+  newPages.value = '';
+  newRead.checked = false;
+
+  // Show updated library
+  showLibrary();
+};
+
 // Add event listeners
 addButton.addEventListener('click', showForm);
 submitButton.addEventListener('click', addBookToLibrary);
 
+// Initially show all books from library array
 showLibrary();
